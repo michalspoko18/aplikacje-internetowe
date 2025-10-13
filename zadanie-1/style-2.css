@@ -1,0 +1,258 @@
+/* Globalne resetowanie i podstawowe style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.7;
+    color: #e0e0e0;
+    background-color: #121212;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-image: linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818),
+                      linear-gradient(45deg, #181818 25%, transparent 25%, transparent 75%, #181818 75%, #181818);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+/* Style nagłówka */
+header {
+    background-color: #ff4500;
+    color: #121212;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+}
+
+header h1 {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    text-align: left;
+    margin-bottom: 2rem;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+}
+
+/* Style nawigacji */
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    gap: 1rem;
+}
+
+nav a {
+    color: #121212;
+    text-decoration: none;
+    font-weight: 900;
+    background-color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: 2px solid #121212;
+}
+
+nav a:hover {
+    background-color: #121212;
+    color: #ff4500;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 0px #ff4500;
+}
+
+/* Style głównej treści */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+section {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-left: 5px solid #ff4500;
+    position: relative;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 20px 20px 0;
+    border-style: solid;
+    border-color: #121212 #121212 #ff4500 #1e1e1e;
+}
+
+/* Style nagłówków */
+h2 {
+    color: #ff4500;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px dashed #ff4500;
+}
+
+h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin: 2rem 0 1rem;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-left: 15px;
+    border-left: 3px solid #ff4500;
+}
+
+/* Style paragrafów */
+p {
+    margin-bottom: 1rem;
+    text-align: justify;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* Style list */
+ol, ul {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+ol {
+    counter-reset: item;
+    list-style-type: none;
+}
+
+ol > li {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+ol > li::before {
+    content: counter(item);
+    counter-increment: item;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #ff4500;
+    color: #121212;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul > li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+ul > li::before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: #ff4500;
+}
+
+/* Style stopki */
+footer {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    border-top: 5px solid #ff4500;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    text-align: center;
+}
+
+/* Media queries dla responsywności */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+    
+    main {
+        grid-template-columns: 1fr;
+    }
+    
+    header {
+        clip-path: none;
+    }
+}
+
+/* Dodatkowe style dla elementów list */
+ol strong {
+    color: #ff4500;
+    font-weight: bold;
+    font-style: normal;
+    background-color: rgba(255, 69, 0, 0.1);
+    padding: 0.1rem 0.3rem;
+}
+
+/* Style linków w treści */
+main a {
+    color: #ff4500;
+    text-decoration: none;
+    border-bottom: 1px dashed #ff4500;
+    padding-bottom: 1px;
+    transition: all 0.3s ease;
+}
+
+main a:hover {
+    color: #ffffff;
+    background-color: #ff4500;
+    border-bottom: 1px solid #ff4500;
+}
+
+/* Dodatkowe efekty wizualne */
+section:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+section:nth-child(odd) {
+    border-left-color: #ffffff;
+}
+
+section:nth-child(odd) h2 {
+    border-bottom-color: #ffffff;
+}
+
+section:nth-child(odd)::before {
+    border-color: #121212 #121212 #ffffff #1e1e1e;
+}
+
+/* Stylizacja kodu lub bloków pre */
+pre, code {
+    background-color: #2d2d2d;
+    color: #ff4500;
+    padding: 0.2rem 0.4rem;
+    font-family: 'Courier New', monospace;
+    border-left: 3px solid #ff4500;
+}
