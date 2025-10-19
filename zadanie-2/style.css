@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+#taskList li {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#taskInput, #dueDateInput {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+#addTaskBtn {
+    background: green;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+#errorMessage {
+    color: red;
+    margin-top: 10px;
+}
+
+mark {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    padding: 5px;
+    border: 1px solid #000;
+}
+
+.edit-text-input {
+    padding: 5px;
+    border: 2px solid #007bff;
+    border-radius: 3px;
+}
+
+.edit-date-input {
+    padding: 5px;
+    border: 2px solid #007bff;
+    border-radius: 3px;
+}

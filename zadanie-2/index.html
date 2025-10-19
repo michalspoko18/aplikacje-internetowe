@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Zadań</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Lista Zadań</h1>
+    
+    <input type="text" id="searchInput" placeholder="Wyszukaj zadania...">
+    
+    <ul id="taskList">
+        <li>
+            <span>Ukończyć laboratorium z JavaScript</span>
+            <span>Termin: 25.10.2025 14:00</span>
+            <button class="edit-btn">Edytuj</button>
+            <button class="delete-btn">Usuń</button>
+        </li>
+        <li>
+            <span>Przygotować prezentację</span>
+            <span>Termin: 30.10.2025 10:00</span>
+            <button class="edit-btn">Edytuj</button>
+            <button class="delete-btn">Usuń</button>
+        </li>
+        <li>
+            <span>Zrobić zakupy</span>
+            <span>Brak terminu</span>
+            <button class="edit-btn">Edytuj</button>
+            <button class="delete-btn">Usuń</button>
+        </li>
+        <li>
+            <span>Napisać raport</span>
+            <span>Termin: 22.10.2025 16:00</span>
+            <button class="edit-btn">Edytuj</button>
+            <button class="delete-btn">Usuń</button>
+        </li>
+    </ul>
+    
+    <div>
+        <input type="text" id="taskInput" placeholder="Wprowadź nowe zadanie...">
+        <input type="datetime-local" id="dueDateInput">
+        <button id="addTaskBtn">Dodaj zadanie</button>
+    </div>
+    <div id="errorMessage"></div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
