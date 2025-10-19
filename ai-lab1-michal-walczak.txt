@@ -1,0 +1,4 @@
+Czym jest semantyczny HTML i dlaczego jego użycie jest sugerowane do tworzenia stron web?
+
+Są to znaczniki które opisują budowe strony przykładowo <header></header> <aside></aside> <footer></footer>.
+Mają znaczenie SEO, i wpływają na pozycje i widzenie strony przez przeglądarke.
