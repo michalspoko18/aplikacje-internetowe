@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikacje Internetowe - Zadanie 3 - Map Puzzle Game</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧩</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧩 Map Puzzle Game</h1>
+            <p class="subtitle">Zadanie 3 - Aplikacje Internetowe - Leaflet & Drag and Drop</p>
+        </header>
+
+        <div class="game-info">
+            <div class="info-panel">
+                <div class="stat">
+                    <span class="stat-label">Czas:</span>
+                    <span id="timer" class="stat-value">00:00</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Ruchy:</span>
+                    <span id="moves" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Postęp:</span>
+                    <span id="progress" class="stat-value">0/16</span>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="newGameBtn" class="btn btn-primary">🎮 Nowa gra</button>
+                <button id="captureBtn" class="btn btn-secondary">📷 Przechwyć mapę</button>
+                <button id="shuffleBtn" class="btn btn-warning" disabled>🔀 Tasuj</button>
+                <button id="hintBtn" class="btn btn-info" disabled>💡 Podpowiedź</button>
+                <label for="toggleNumbers" class="btn btn-outline" style="display:inline-flex; align-items:center; gap:8px;">
+                    <input type="checkbox" id="toggleNumbers" checked style="accent-color:#667eea;"> 🔢 Numery
+                </label>
+            </div>
+        </div>
+
+        <main class="game-container">
+            <section class="map-section">
+                <h2>🗺️ Mapa źródłowa</h2>
+                <div id="map" class="map-container"></div>
+                <div class="map-controls">
+                    <button id="useCurrentLocation" class="btn btn-outline">📍 Użyj mojej lokalizacji</button>
+                    <button id="randomLocation" class="btn btn-outline">🎲 Losowa lokalizacja</button>
+                </div>
+            </section>
+
+            <section class="puzzle-section">
+                <h2>🧩 Puzzle</h2>
+                <div id="puzzleBoard" class="puzzle-board">
+                    <div class="puzzle-slot" data-position="0"></div>
+                    <div class="puzzle-slot" data-position="1"></div>
+                    <div class="puzzle-slot" data-position="2"></div>
+                    <div class="puzzle-slot" data-position="3"></div>
+                    <div class="puzzle-slot" data-position="4"></div>
+                    <div class="puzzle-slot" data-position="5"></div>
+                    <div class="puzzle-slot" data-position="6"></div>
+                    <div class="puzzle-slot" data-position="7"></div>
+                    <div class="puzzle-slot" data-position="8"></div>
+                    <div class="puzzle-slot" data-position="9"></div>
+                    <div class="puzzle-slot" data-position="10"></div>
+                    <div class="puzzle-slot" data-position="11"></div>
+                    <div class="puzzle-slot" data-position="12"></div>
+                    <div class="puzzle-slot" data-position="13"></div>
+                    <div class="puzzle-slot" data-position="14"></div>
+                    <div class="puzzle-slot" data-position="15"></div>
+                </div>
+                
+                <div id="puzzlePieces" class="puzzle-pieces">
+                    <!-- Kawałki puzzle będą generowane dynamicznie -->
+                </div>
+
+                <div class="puzzle-info">
+                    <p>Przeciągnij kawałki puzzle na odpowiednie miejsca, aby odtworzyć mapę.</p>
+                    <div id="gameStatus" class="game-status">Przechwyć mapę aby rozpocząć grę!</div>
+                </div>
+            </section>
+        </main>
+
+        <section class="instructions">
+            <h2>📋 Instrukcje</h2>
+            <div class="instructions-grid">
+                <div class="instruction">
+                    <div class="instruction-icon">🗺️</div>
+                    <h3>Wybierz mapę</h3>
+                    <p>Użyj swojej lokalizacji lub wybierz losowe miejsce na mapie</p>
+                </div>
+                <div class="instruction">
+                    <div class="instruction-icon">📷</div>
+                    <h3>Przechwyć obszar</h3>
+                    <p>Kliknij "Przechwyć mapę" aby utworzyć puzzle z aktualnego widoku</p>
+                </div>
+                <div class="instruction">
+                    <div class="instruction-icon">🧩</div>
+                    <h3>Ułóż puzzle</h3>
+                    <p>Przeciągnij kawałki na odpowiednie miejsca używając drag and drop</p>
+                </div>
+                <div class="instruction">
+                    <div class="instruction-icon">🏆</div>
+                    <h3>Wygraj</h3>
+                    <p>Ułóż wszystkie kawałki we właściwych miejscach jak najszybciej!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>🚀 Funkcjonalności</h2>
+            <div class="features-list">
+                <div class="feature">
+                    <strong>Leaflet.js Integration:</strong> Interaktywna mapa z różnymi warstwami
+                </div>
+                <div class="feature">
+                    <strong>HTML5 Drag & Drop:</strong> Płynne przeciąganie kawałków puzzle
+                </div>
+                <div class="feature">
+                    <strong>Geolocation API:</strong> Automatyczne wykrywanie lokalizacji
+                </div>
+                <div class="feature">
+                    <strong>Canvas API:</strong> Generowanie kawałków puzzle z mapy
+                </div>
+                <div class="feature">
+                    <strong>Responsive Design:</strong> Działanie na różnych urządzeniach
+                </div>
+                <div class="feature">
+                    <strong>Game Logic:</strong> Liczenie czasu, ruchów i postępu
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Michał Walczak - Aplikacje Internetowe</p>
+            <p>Zadanie 3 - Map Puzzle Game z Leaflet.js i Drag & Drop API</p>
+        </footer>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin="anonymous"></script>
+    
+    <!-- Leaflet Image plugin for exporting map to canvas -->
+    <script src="https://unpkg.com/leaflet-image/leaflet-image.js"></script>
+    
+    <!-- Main application script -->
+    <script src="main.js"></script>
+</body>
+</html>
