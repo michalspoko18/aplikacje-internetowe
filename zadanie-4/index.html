@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>LAB 4 Pogoda</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>AI LAB 4 – Pogoda</h1>
+        <p class="subtitle">
+          Bieżąca pogoda i prognoza (XMLHttpRequest + Fetch)
+        </p>
+      </header>
+      <section class="search-bar">
+        <label for="cityInput">Miejscowość</label>
+        <div class="search-row">
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Miasto (np. Szczecin)"
+            autocomplete="off"
+          />
+          <button id="weatherBtn" type="button">Pogoda</button>
+          <button id="exampleBtn" type="button" title="Przykład">
+            Szczecin
+          </button>
+        </div>
+        <div id="statusBar" class="status-bar"></div>
+        <div id="errorBox" class="error-box" hidden></div>
+      </section>
+      <section id="currentWeather" class="panel">
+        <h2>Bieżąca pogoda</h2>
+        <div class="loader" id="currentLoader" hidden></div>
+        <div id="currentContent" class="content"></div>
+      </section>
+      <section id="forecastWeather" class="panel">
+        <h2>Prognoza 5 dni (interwał 3h)</h2>
+        <div class="loader" id="forecastLoader" hidden></div>
+        <div id="forecastContent" class="content"></div>
+      </section>
+      <footer class="app-footer">
+        <small
+          >Klucz tymczasowy może zostać dezaktywowany – wygeneruj własny na
+          openweathermap.org</small
+        >
+      </footer>
+    </main>
+    <script src="env.js" defer></script>
+    <script defer src="main.js"></script>
+  </body>
+</html>
